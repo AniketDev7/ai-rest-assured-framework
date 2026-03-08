@@ -215,11 +215,11 @@ public class AITestGeneratorCLI {
                 + "  OPENAI_API_KEY           Required when using --provider openai\n"
                 + "  ANTHROPIC_API_KEY        Required when using --provider claude\n\n"
                 + "Examples:\n"
-                + "  # OpenAI\n"
+                + "  # OpenAI (Amadeus Flight Most Traveled Destinations)\n"
                 + "  export OPENAI_API_KEY=sk-...\n"
-                + "  mvn exec:java -Dexec.args=\"--spec petstore.json\"\n\n"
-                + "  # Claude\n"
+                + "  mvn exec:java -Dexec.args=\"--spec src/main/resources/sample-specs/amadeus-flight-most-traveled-destinations.json\"\n\n"
+                + "  # Claude (Google Travel Partner API)\n"
                 + "  export ANTHROPIC_API_KEY=sk-ant-...\n"
-                + "  mvn exec:java -Dexec.args=\"--spec petstore.yaml -p claude\"\n");
+                + "  mvn exec:java -Dexec.args=\"--spec src/main/resources/sample-specs/google-travel-partner-openapi.json -p claude\"\n");
     }
 }
