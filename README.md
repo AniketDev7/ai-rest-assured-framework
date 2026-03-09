@@ -4,7 +4,7 @@ This folder holds **real OpenAPI specs** from [APIs.guru](https://apis.guru) tha
 
 ## Why these APIs?
 
-- **Industry specs** — Amadeus (travel) and Google (Hotel Center) instead of generic Petstore.
+- **Industry specs** — Amadeus (travel) and Google (Hotel Center).
 - **Real structure** — Rich schemas, error responses, and parameters for the AI to analyze.
 - **Portfolio-ready** — Shows the framework working with production-style specs.
 
