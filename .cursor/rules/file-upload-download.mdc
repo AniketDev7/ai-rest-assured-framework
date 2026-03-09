@@ -1,0 +1,12 @@
+---
+description: File upload (multipart) and file/binary download in API tests
+globs: "**/*Test.java"
+alwaysApply: false
+---
+
+# File upload and download
+
+- **Upload (multipart):** Use `.multiPart("file", file)` or `.multiPart("fieldName", fileName, inputStream, "mime/type")`. Set `Content-Type` to multipart (Rest Assured sets it when using `multiPart`).
+- **Upload (binary body):** For raw file-as-body, use `.body(file).contentType(ContentType.BINARY)` or the appropriate content type.
+- **Download:** Use `.extract().asByteArray()` or `.extract().response().getBody().asInputStream()` for binary; assert `Content-Disposition` or file-size headers when relevant.
+- **Test files:** Keep small sample files in `src/test/resources` (e.g. `test.pdf`, `sample.json`). Do not commit large or sensitive files.

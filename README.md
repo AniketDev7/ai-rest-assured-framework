@@ -53,6 +53,10 @@ Both specs are full OpenAPI/Swagger definitions; the AI can use them to generate
 
    (e.g. `mvn test -Dapi.base.url=https://test.api.amadeus.com/v1` if your framework supports it; pass token via config or env.)
 
+5. **Cursor and Claude instructions**  
+   - **Cursor:** `.cursor/rules/` (API test style, auth, validation, etc.) and `.cursor/skills/` (generate tests from spec, run tests, add auth, fix failing tests, validate spec, refactor base class, logging, run with Claude).  
+   - **Claude:** `CLAUDE.md` (project overview, commands) and `.claude/rules/` (api-tests, generator-and-specs, workflows). Use either for consistent test generation and editing.
+
 ---
 
 ## Quick reference: spec URLs

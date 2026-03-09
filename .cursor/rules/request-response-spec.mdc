@@ -1,0 +1,12 @@
+---
+description: Reusing RequestSpecification and ResponseSpecification
+globs: "**/*Test.java"
+alwaysApply: false
+---
+
+# Request and response spec
+
+- **RequestSpecBuilder:** Build a shared spec with `.setBaseUri()`, `.setContentType(ContentType.JSON)`, `.addFilter(authFilter)`, `.addRequestSpecification(...)`. Assign to a `RequestSpecification` and pass to `given(spec).when()...`.
+- **ResponseSpecBuilder:** Use for common response checks (e.g. `.expectStatusCode(200)`, `.expectContentType(ContentType.JSON)`). Apply with `.then().spec(responseSpec)` or in a base class. Use sparingly so individual tests remain explicit.
+- **Default spec:** Set `RestAssured.requestSpecification` and `responseSpecification` in `@BeforeMethod` to apply to all tests in the class. Override in a test with a new `given()` when needed.
+- **Logging:** Add `.log().ifValidationFails()` to the request spec so failures automatically log request/response.

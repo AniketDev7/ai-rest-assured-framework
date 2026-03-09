@@ -1,0 +1,12 @@
+---
+description: Style and structure for AI-generated test code
+globs: "**/generated/**/*.java","**/*Generated*Test.java"
+alwaysApply: false
+---
+
+# Generator output style
+
+- **Package:** Place generated tests under a dedicated package (e.g. `com.qa.api.tests.generated`) so they can be identified and optionally excluded from style checks until reviewed.
+- **Structure:** Follow project rules: `given().when().then()`, explicit `.statusCode(...)`, TestNG `@Test`. One test class per resource or tag from the spec.
+- **Naming:** Use `shouldReturn{Status}_when{Condition}` or the pattern used elsewhere in the project. Include negative cases (404, 400) where the spec defines them.
+- **Review:** Treat generated code as a draft: ensure base URI and auth come from config, remove any placeholder tokens, and align with existing test style before committing.

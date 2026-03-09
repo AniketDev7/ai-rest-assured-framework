@@ -1,0 +1,12 @@
+---
+description: Keep tests independent and avoid shared mutable state
+globs: "**/*Test.java"
+alwaysApply: false
+---
+
+# Test isolation
+
+- **Independence:** Each test should pass in isolation. Do not rely on execution order or state left by another test.
+- **Setup/teardown:** Use `@BeforeMethod` for per-test setup (e.g. reset `RequestSpecification`, set base URI). Use `@AfterMethod` only when you must clean up (e.g. delete a created resource).
+- **No shared mutable state:** Avoid static or instance fields that tests mutate; if you share a read-only config or client, ensure it is thread-safe and not modified by tests.
+- **Parallel execution:** Tests may run in parallel (e.g. TestNG parallel="methods"). Do not share resources that are not thread-safe without proper synchronization.

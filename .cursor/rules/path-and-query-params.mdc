@@ -1,0 +1,12 @@
+---
+description: Use path and query parameters correctly; avoid manual URL building
+globs: "**/*Test.java"
+alwaysApply: false
+---
+
+# Path and query parameters
+
+- **Path params:** Use `.pathParam("id", value)` (or `pathParams(Map)`) instead of concatenating into the path. Example: `.pathParam("id", 123).when().get("/users/{id}")`.
+- **Query params:** Use `.queryParam("key", value)` or `.queryParams(Map)`. For multi-value: `.queryParam("tags", "a", "b")`.
+- **No string concatenation:** Do not build URLs with `+` or `String.format` for path/query parts; use Rest Assured's param methods so encoding and structure stay correct.
+- **Optional params:** Omit optional query params when testing required behavior; add tests that include optional params where the spec defines them.

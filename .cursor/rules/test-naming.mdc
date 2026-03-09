@@ -1,0 +1,12 @@
+---
+description: Naming conventions for test methods and test classes
+globs: "**/*Test.java"
+alwaysApply: false
+---
+
+# Test naming
+
+- **Method names:** Use descriptive, consistent names. Prefer: `shouldReturn{Status}_when{Condition}` (e.g. `shouldReturn200_whenUserExists`, `shouldReturn404_whenUserNotFound`). Alternative: `test{Scenario}_{ExpectedResult}`.
+- **Readability:** Names should state the scenario and expected outcome so failures are self-explanatory.
+- **Class names:** Suffix with `Test` or `ApiTest` (e.g. `UserApiTest`, `FlightDestinationsTest`). One class per resource or feature is a good default.
+- **Consistency:** Match the naming style already used in the same file or module.

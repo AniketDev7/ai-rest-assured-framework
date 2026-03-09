@@ -1,0 +1,13 @@
+---
+description: Validate response body and error payloads in API tests
+globs: "**/*Test.java"
+alwaysApply: false
+---
+
+# Response validation
+
+- **Status first:** Always assert `.statusCode(...)` before diving into body.
+- **Body assertions:** Use JsonPath: `.body("field", equalTo(value))`, `.body("list.size()", equalTo(2))`. Use `hasItems`, `notNullValue`, etc. from `org.hamcrest.Matchers`.
+- **Error responses:** For 4xx/5xx, assert the error payload shape when the API defines it (e.g. `.body("error.code", notNullValue())`, `.body("message", containsString("..."))`).
+- **Type safety:** Prefer `.extract().as(MyPojo.class)` or `.extract().jsonPath().getObject("$", MyPojo.class)` when you need to reuse or assert on many fields.
+- **Arrays:** Use `hasItems`, `hasSize`, or iterate with JsonPath; avoid assuming order unless the spec guarantees it.

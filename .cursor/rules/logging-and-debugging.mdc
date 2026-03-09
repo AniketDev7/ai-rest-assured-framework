@@ -1,0 +1,12 @@
+---
+description: Logging and debugging in API tests without exposing secrets
+globs: "**/*Test.java"
+alwaysApply: false
+---
+
+# Logging and debugging
+
+- **On failure:** Use `.log().ifValidationFails()` (or `ifError()`) so request/response are logged only when a test fails. Avoid `.log().all()` on every request in CI to keep logs readable.
+- **Never log secrets:** Do not log headers or body that contain Authorization, API keys, or passwords. If using custom logging, strip or redact sensitive fields.
+- **Request/response:** For local debugging, `.log().all()` or `.log().body()` is fine; remove or guard with a debug flag before committing if it is noisy.
+- **TestNG:** Use TestNG's reporting and assertions; avoid `System.out` for important assertions. Use descriptive assertion messages where helpful: `assertTrue(condition, "message")`.

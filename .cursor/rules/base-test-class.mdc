@@ -1,0 +1,12 @@
+---
+description: Abstract base test class and shared setup for API tests
+globs: "**/*Test.java"
+alwaysApply: false
+---
+
+# Base test class
+
+- **When to use:** Introduce an abstract base class when multiple test classes share the same base URI, auth, RequestSpecification, or common constants. Avoid for a single test class.
+- **Setup:** Put shared `RequestSpecification` build in `@BeforeMethod` or `@BeforeClass` (if base URL is static). Set `RestAssured.baseURI`, `basePath`, or use `.baseUri(...)` on the spec.
+- **Inheritance:** Keep the base class focused on config and spec; put resource-specific helpers in the subclass or a util class.
+- **TestNG:** Use `@BeforeMethod` for per-test isolation; use `@BeforeClass` only for one-time setup (e.g. reading config). Do not share mutable state.

@@ -1,0 +1,12 @@
+---
+description: Cookie and session handling in API tests
+globs: "**/*Test.java"
+alwaysApply: false
+---
+
+# Cookies and session
+
+- **Automatic cookies:** Rest Assured reuses cookies by default within the same spec/session. Use a fresh `RequestSpecification` per test if you need an isolated session.
+- **Set cookie:** Use `.cookie("name", "value")` or `.cookies(Map)` when the API expects a cookie.
+- **Assert cookie:** Use `.cookie("name", equalTo("value"))` in the response. Use `.detailedCookie("name")` for path, maxAge, etc.
+- **Session ID:** If the API uses session cookies, log in once in `@BeforeMethod` or a base class and let the spec reuse the session. Do not depend on order across test classes.

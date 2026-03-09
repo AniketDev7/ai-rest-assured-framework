@@ -1,0 +1,13 @@
+---
+description: Testing error responses and edge cases
+globs: "**/*Test.java"
+alwaysApply: false
+---
+
+# Error and edge cases
+
+- **Validation errors:** Test missing required fields, wrong types, and boundary values (empty string, max length) when the API returns 400 with a clear message or body.
+- **Not found:** Use invalid or non-existent IDs and assert 404 (and optional error body). Do not rely on a specific "test" ID that might exist in some environments.
+- **Conflict:** Test 409 where the API defines it (e.g. duplicate resource). Use unique data or clean up after to avoid flakiness.
+- **Server errors:** Test 500/503 only if the API documents them or you are testing a specific error handler. Prefer contract over implementation details.
+- **Malformed request:** Optionally test invalid JSON or wrong Content-Type returning 400/415. One test per scenario is enough.

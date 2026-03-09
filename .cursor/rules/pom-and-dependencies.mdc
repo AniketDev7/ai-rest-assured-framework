@@ -1,0 +1,13 @@
+---
+description: Maven POM and dependency conventions for this project
+globs: "pom.xml"
+alwaysApply: false
+---
+
+# POM and dependencies
+
+- **Java:** Keep `maven.compiler.source` and `target` at 11 unless the project upgrades; all modules and plugins should align.
+- **Versions:** Use properties for Rest Assured (`rest-assured.version`), TestNG (`testng.version`), and Jackson (`jackson.version`). Update together and avoid mixing incompatible versions.
+- **Rest Assured:** This project uses Rest Assured 5.x; use the 5.x API (e.g. `io.restassured.RestAssured`, `io.restassured.http.ContentType`). Do not add unrelated HTTP client dependencies that could conflict.
+- **Test scope:** TestNG and any test-only utilities should be `<scope>test</scope>`. Rest Assured is typically test scope as well.
+- **Plugins:** Keep `maven-compiler-plugin` and `maven-surefire-plugin` versions explicit. Use `exec-maven-plugin` for the CLI generator as already configured.

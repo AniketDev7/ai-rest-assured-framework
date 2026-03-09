@@ -1,0 +1,13 @@
+---
+description: Authentication patterns in API tests (Bearer, Basic, API key)
+globs: "**/*Test.java"
+alwaysApply: false
+---
+
+# Authentication
+
+- **Bearer tokens:** Use `.header("Authorization", "Bearer " + token)`. Get token from config, env, or a dedicated auth helper—never hardcode.
+- **Basic auth:** Use `.auth().preemptive().basic(username, password)` or `.auth().basic(...)`. Use test credentials from config only.
+- **API key:** When the API expects a key in header or query, use a constant for the key name and config for the value. Example: `.header(API_KEY_HEADER, getApiKey())`.
+- **Unauthenticated:** Add a test that omits or invalidates auth and expects 401 (or 403) to confirm the endpoint is protected.
+- **Reuse:** Set auth once in a shared `RequestSpecification` (e.g. `@BeforeMethod`) so tests stay DRY.

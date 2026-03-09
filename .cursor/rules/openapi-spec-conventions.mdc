@@ -1,0 +1,13 @@
+---
+description: Conventions for OpenAPI/Swagger spec files used by the test generator
+globs: "**/sample-specs/**/*.json,**/sample-specs/**/*.yaml,**/resources/**/sample-specs/**/*.json,**/resources/**/sample-specs/**/*.yaml"
+alwaysApply: false
+---
+
+# OpenAPI spec conventions
+
+- **Format:** Prefer one spec per API or major version. Use JSON or YAML; ensure the file is valid OpenAPI 3.x (or 2.0 if the generator supports it).
+- **Naming:** Use kebab-case or descriptive names (e.g. `amadeus-flight-most-traveled-destinations.json`, `google-travel-partner-openapi.json`).
+- **Location:** Place specs under `sample-specs/` or `src/main/resources/sample-specs/` so the generator and docs can reference them consistently.
+- **Completeness:** Include at least paths, methods, and response codes. Document request body schemas and examples when they improve generated test quality.
+- **No secrets:** Do not put API keys or passwords in spec files; use securitySchemes with variable names and document that real values come from env/config.

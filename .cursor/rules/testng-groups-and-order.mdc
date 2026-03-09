@@ -1,0 +1,12 @@
+---
+description: TestNG groups, dependencies, and execution order
+globs: "**/*Test.java","**/testng.xml"
+alwaysApply: false
+---
+
+# TestNG groups and order
+
+- **Groups:** Use groups for categorization (e.g. `@Test(groups = "smoke")`, `groups = "regression"`). Run subsets via testng.xml or Maven profile (e.g. `-Dgroups=smoke`).
+- **Order:** Do not rely on `dependsOnMethods` for correctness; use it only for explicit flow (e.g. "run B after A" for clarity). Each test should be logically independent.
+- **Parallel:** Respect TestNG parallel settings in testng.xml (e.g. `parallel="methods"`). Avoid static or shared mutable state so parallel runs are safe.
+- **testng.xml:** Keep suite/test definitions in `src/test/resources/testng.xml`. Use it to set groups, parameters, or parallel config; do not duplicate test class lists unnecessarily.

@@ -1,0 +1,12 @@
+---
+description: Meaningful assertion messages and failure clarity
+globs: "**/*Test.java"
+alwaysApply: false
+---
+
+# Assertion messages
+
+- **When to add:** Use a message for assertions that might be unclear on failure (e.g. `assertTrue(response.path("active"), "Expected user to be active")`). Rest Assured's `.body("x", equalTo(y))` already shows path and expected/actual; add messages for custom assertions.
+- **Format:** Keep messages short and actionable: state what was expected and, if helpful, the context (e.g. "status should be 200 for valid request").
+- **TestNG:** Use the message parameter: `Assert.assertEquals(actual, expected, "message")`, `Assert.assertTrue(condition, "message")`.
+- **Avoid noise:** Do not add redundant messages to every assertion; focus on non-obvious or composite checks.

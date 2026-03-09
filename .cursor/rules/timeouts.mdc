@@ -1,0 +1,12 @@
+---
+description: Timeouts and long-running requests in API tests
+globs: "**/*Test.java"
+alwaysApply: false
+---
+
+# Timeouts
+
+- **Request timeout:** Use `.timeout(Duration.ofSeconds(30))` (or `config().httpClient(...)`) when the API can be slow. Avoid defaulting to very long timeouts so failures are detected quickly.
+- **Connection timeout:** Configure separately if needed for "connection refused" vs "read timeout" clarity. Rest Assured uses the same HTTP client config for both when set.
+- **CI vs local:** Use the same timeout values in CI and locally so flakiness is consistent; increase only when the API contract justifies it.
+- **No sleep:** Prefer explicit timeouts over `Thread.sleep()`; use polling or webhook-style tests only when the API design requires it.

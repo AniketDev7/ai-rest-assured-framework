@@ -1,0 +1,12 @@
+---
+description: Conventions for main source: CLI, spec analyzer, and code generator
+globs: "src/main/java/**/*.java"
+alwaysApply: false
+---
+
+# Main Java (CLI and generator)
+
+- **CLI:** Use a single entry (e.g. `AITestGeneratorCLI`) with clear args (e.g. `--spec`, `-p claude`). Parse with a standard library or minimal custom parsing; print usage on `--help` or invalid args.
+- **Spec parsing:** Use OpenAPI 3.x / Swagger parsers or Jackson for JSON/YAML. Validate spec early and fail with a clear message if invalid.
+- **Code generation:** Keep prompt loading and LLM calls separate from file writing. Write generated Java to a configurable output path (default `src/test/java/...`). Use existing `CodeGenerator` and prompt templates.
+- **Packages:** Keep `com.qa.api` structure: `ai` (LLM clients), `generator` (analyzer, code gen), `model` (DTOs), main CLI at top level. Do not add test-only dependencies to main code.

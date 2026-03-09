@@ -1,0 +1,12 @@
+---
+description: Use Hamcrest matchers consistently in REST Assured and TestNG
+globs: "**/*Test.java"
+alwaysApply: false
+---
+
+# Hamcrest matchers
+
+- **Import:** Use `org.hamcrest.Matchers` (e.g. `equalTo`, `notNullValue`, `hasItems`, `hasSize`, `containsString`, `isEmptyString`). Rest Assured includes Hamcrest; use static import for readability.
+- **Body assertions:** Prefer `.body("field", equalTo(value))`, `.body("list", hasSize(2))`, `.body("name", notNullValue())`. Use `hasItems` for partial list matching when order is not guaranteed.
+- **Type matching:** Use `instanceOf`, `anyOf`, `allOf` when needed. Use `isEmptyOrNullString()` for optional string fields.
+- **Consistency:** Use the same matcher style across the project (e.g. `equalTo` vs `is(value)`); prefer `equalTo` for clarity. Do not mix raw boolean checks where a matcher is clearer.

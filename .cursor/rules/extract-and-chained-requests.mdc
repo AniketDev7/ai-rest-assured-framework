@@ -1,0 +1,12 @@
+---
+description: Extracting values from responses and using them in follow-up requests
+globs: "**/*Test.java"
+alwaysApply: false
+---
+
+# Extract and chained requests
+
+- **Extract:** Use `.extract().path("field")`, `.extract().jsonPath().getString("id")`, or `.extract().as(MyPojo.class)` to get values from a response.
+- **Same test:** When a flow requires "create then get by ID", you can do both in one test: extract ID from POST response, then GET with that ID. Keep the test focused and readable.
+- **Separate tests:** Prefer separate tests when the second request is testing different behavior (e.g. one test for create, one for get). Share setup via fixtures or `@BeforeMethod` if needed.
+- **Tokens:** Extract auth tokens from login response and reuse in subsequent requests in the same test or via a shared spec. Do not depend on test order.

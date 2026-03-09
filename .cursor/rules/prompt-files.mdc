@@ -1,0 +1,12 @@
+---
+description: Structure and conventions for LLM prompt templates
+globs: "**/prompts/**/*.txt","**/prompts/**/*.md"
+alwaysApply: false
+---
+
+# Prompt files
+
+- **Location:** Keep prompts in `src/main/resources/prompts/` (e.g. `analyze-spec.txt`, `generate-code.txt`) so they are on the classpath and the generator can load them.
+- **Placeholders:** Use clear placeholders (e.g. `{{SPEC_SUMMARY}}`, `{{TEST_CASES}}`) and document them in code or comments. Replace with actual values before sending to the LLM.
+- **Instructions:** Be explicit about output format (e.g. "Return only the list of test cases, one per line") and constraints (REST Assured, TestNG, no soft assertions) so generated code matches project rules.
+- **Versioning:** When changing prompts, consider backward compatibility of generated output; update tests or samples if the expected format changes.

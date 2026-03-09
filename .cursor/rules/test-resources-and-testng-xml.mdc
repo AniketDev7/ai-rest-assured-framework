@@ -1,0 +1,12 @@
+---
+description: Layout of test resources and testng.xml
+globs: "src/test/resources/**/*","**/testng.xml"
+alwaysApply: false
+---
+
+# Test resources and testng.xml
+
+- **Location:** Keep test-only files in `src/test/resources/`. Use subfolders for clarity (e.g. `fixtures/`, `schemas/`). Reference via classpath in tests (e.g. `getClass().getResource("/fixtures/user.json")`).
+- **testng.xml:** Place in `src/test/resources/testng.xml`. Define suites/tests and refer to test classes by package or class name. Use `<parameter>` for base URL or other config if needed.
+- **Maven:** Surefire picks up testng.xml by default when present. Use `-DsuiteXmlFile=...` to pass a different suite. Do not commit large or binary test data; use `.gitignore` if necessary.
+- **Naming:** Use lowercase, kebab-case or snake_case for resource file names (e.g. `user-payload.json`, `expected_404.json`).

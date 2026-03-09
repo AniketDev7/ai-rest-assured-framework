@@ -1,0 +1,12 @@
+---
+description: README and documentation conventions for this project
+globs: "README.md","**/README.md","docs/**/*.md"
+alwaysApply: false
+---
+
+# README and docs
+
+- **README.md:** Include: project name and one-line description; prerequisites (Java 11, Maven, API keys); how to run tests (`mvn test`); how to run the generator (`mvn exec:java -Dexec.args="--spec <path>"`); required env vars (`OPENAI_API_KEY`, `ANTHROPIC_API_KEY`); where generated tests go; link to sample specs.
+- **Code comments:** Document public APIs and non-obvious logic. Do not comment obvious statements. Keep prompt templates and generator steps understandable for future changes.
+- **No secrets:** Never document real API keys or passwords. Use placeholders (e.g. `export OPENAI_API_KEY=your-key`) and point to env or local config.
+- **Updates:** When adding a new CLI flag, dependency, or env var, update the README so users can run the project without reading the code.

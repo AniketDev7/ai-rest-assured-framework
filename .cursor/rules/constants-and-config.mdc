@@ -1,0 +1,11 @@
+---
+description: Centralize paths, header names, and config keys
+alwaysApply: true
+---
+
+# Constants and config
+
+- **Paths:** Define API paths as constants or in a config class (e.g. `USERS_PATH = "/users"`, `USER_BY_ID = "/users/{id}"`) to avoid typos and simplify refactors.
+- **Header names:** Use `HttpHeaders` or project constants for header names (e.g. `CONTENT_TYPE`, `AUTHORIZATION`).
+- **Config keys:** Use a single place for property names (e.g. `api.base.url`, `api.key`). Read via `System.getProperty()` or a small config loader; document required properties in README.
+- **Magic numbers:** Replace raw status codes with named constants (e.g. `SC_OK`, `HttpStatus.SC_NOT_FOUND`) when it improves readability.

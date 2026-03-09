@@ -1,0 +1,12 @@
+---
+description: Content-Type and Accept headers and response format assertions
+globs: "**/*Test.java"
+alwaysApply: false
+---
+
+# Content-Type and Accept
+
+- **Request body:** Set `Content-Type` when sending a body (e.g. `ContentType.JSON`, `ContentType.XML`). Match what the API expects.
+- **Accept:** Set `Accept` when the API supports multiple response formats. Omit for simple JSON-only APIs.
+- **Response Content-Type:** Assert when the contract matters: `.contentType(ContentType.JSON)` or `.contentType(containsString("application/json"))`.
+- **Encoding:** Use UTF-8; Rest Assured and the server usually default to it. Specify charset in Content-Type only if the API requires it.

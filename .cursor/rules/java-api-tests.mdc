@@ -1,0 +1,13 @@
+---
+description: Conventions when editing Java API test files (*Test.java, *ApiTest.java)
+globs: "**/*Test.java"
+alwaysApply: false
+---
+
+# Java API test files
+
+When adding or editing tests in `*Test.java` or `*ApiTest.java`:
+
+- Use `given().when().then()` and assert status with `.statusCode(...)`.
+- For each happy-path test, add at least one negative case (400, 404, or invalid input) where relevant.
+- Keep the same naming and structure as existing tests in the file (e.g. `shouldReturn200_when...`, `shouldReturn404_when...`).

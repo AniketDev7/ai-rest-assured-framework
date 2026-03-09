@@ -1,0 +1,15 @@
+---
+description: How to set and manage HTTP headers in API tests
+globs: "**/*Test.java"
+alwaysApply: false
+---
+
+# Request headers
+
+When building requests in API tests:
+
+- **Content-Type:** Set explicitly for POST/PUT/PATCH with body: `.contentType(ContentType.JSON)` (or `APPLICATION_JSON`). Omit for GET or when no body.
+- **Accept:** Set when the API supports multiple response formats: `.accept(ContentType.JSON)`.
+- **Authorization:** Use `.header("Authorization", "Bearer " + token)` or a reusable `RequestSpecBuilder` filter. Never hardcode real tokens; use config/env or test fixtures.
+- **Constants:** Prefer constants for header names (e.g. `HttpHeaders.CONTENT_TYPE`) to avoid typos.
+- **Reuse:** For common headers (base URL, auth, default Content-Type), use a shared `RequestSpecification` in `@BeforeMethod` or a base test class.

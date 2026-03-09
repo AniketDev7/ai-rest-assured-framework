@@ -1,0 +1,13 @@
+---
+description: Testing paginated list endpoints
+globs: "**/*Test.java"
+alwaysApply: false
+---
+
+# Pagination
+
+- **Params:** Use query params as defined by the API (e.g. `page`, `size`, `limit`, `offset` or `cursor`). Use `.queryParam("page", 1).queryParam("size", 10)`.
+- **Response shape:** Assert the structure (e.g. `content` array, `totalElements`, `totalPages`, or `next` link). Prefer spec-defined field names.
+- **Defaults:** Test default page/size when the API defines defaults; assert number of items and total when available.
+- **Boundaries:** Optionally test first page, last page, empty result, or invalid page/size (e.g. negative) if the API specifies behavior. One test per scenario.
+- **Order:** Do not assume order of items unless the API guarantees it; assert size and presence of expected items when needed.

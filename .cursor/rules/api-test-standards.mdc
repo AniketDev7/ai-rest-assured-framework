@@ -1,0 +1,14 @@
+---
+description: REST Assured and TestNG style for API tests in this project
+alwaysApply: true
+---
+
+# API test standards (REST Assured + TestNG)
+
+When writing or generating API tests in this project:
+
+- **Structure:** Use `given().when().then()` (REST Assured). Use TestNG (`@Test`, assertions).
+- **Assertions:** Assert status code explicitly with `.statusCode(...)`. Prefer hard assertions; avoid soft assertions unless explicitly requested.
+- **Response body:** Assert response body where relevant (e.g. `.body("field", equalTo(value))`).
+- **Negative cases:** For every positive/happy-path test, include at least one negative case (e.g. invalid ID → 404, missing required field → 400, wrong method).
+- **Base URL:** Tests should use a configurable base URL (e.g. `api.base.url` system property or constant), not a hardcoded URL.

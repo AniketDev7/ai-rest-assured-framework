@@ -1,0 +1,13 @@
+---
+description: Which HTTP status codes to test and when
+globs: "**/*Test.java"
+alwaysApply: false
+---
+
+# Status code coverage
+
+- **Success:** Assert 200 (GET, PUT, PATCH), 201 (POST creating resource), 204 (DELETE or POST with no body). Choose based on the API contract.
+- **Client errors:** Cover 400 (bad request, validation), 401 (unauthenticated), 403 (forbidden), 404 (not found), 409 (conflict) where the API defines them.
+- **Server errors:** Optionally test 500/502/503 if the API documents them or you need to verify error handling; prefer contract over implementation.
+- **One assertion per test:** Assert a single status (and its body) per test method; do not assert multiple status codes in one test.
+- **Align with spec:** Prefer status codes declared in the OpenAPI spec for the operation.

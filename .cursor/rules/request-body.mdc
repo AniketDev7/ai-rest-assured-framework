@@ -1,0 +1,12 @@
+---
+description: How to send request bodies (JSON, etc.) in API tests
+globs: "**/*Test.java"
+alwaysApply: false
+---
+
+# Request body
+
+- **Prefer structured data:** Use a POJO with getters/setters or a `Map<String, Object>` and pass to `.body(object)`. Rest Assured serializes to JSON via Jackson.
+- **Avoid raw JSON strings** for complex bodies unless testing malformed JSON or a specific string payload; structured bodies are easier to maintain and less error-prone.
+- **Minimal payloads:** For negative tests (e.g. 400), send only what's needed to reproduce the case (e.g. missing required field, wrong type).
+- **Content-Type:** When sending a body, set `Content-Type: application/json` (or the correct type) via `.contentType(ContentType.JSON)`.
